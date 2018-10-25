@@ -14,19 +14,22 @@ import javax.ws.rs.core.MediaType;
 @Path("/hello3")
 
 public class HelloWorldRessource {
-    @GET
-    @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String getHelloWorld(@QueryParam("firstname") String f, @QueryParam("lastname") String l) {
-    	String result = User.addUserToMongo(new User(f,l));
-       
-    	return "Hello World from "+f+" "+l+" "+ result;
-    }
-    @GET
-    @Produces("text/html")
-    public String updateuser(@QueryParam("firstname") String f, @QueryParam("lastname") String l) {
-    	String result = User.updateUserToMongo(new User(f,l));
-       
-    	return "Hello World from "+f+" "+l+" "+ result;
-    }
+	@Path("/add")
+	@GET
+	@Produces("text/plain")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public String getHelloWorld(@QueryParam("firstname") String f, @QueryParam("lastname") String l) {
+		String result = User.addUserToMongo(new User(f, l));
+
+		return "Hello World from " + f + " " + l + " " + result;
+	}
+
+	@Path("/update")
+	@GET
+	@Produces("text/html")
+	public String updateuser(@QueryParam("firstname") String f, @QueryParam("lastname") String l, @QueryParam("old") String n) {
+		String result = User.updateUserToMongo(new User(f, l), n);
+
+		return "Hello World from " + f + " " + l + " " + result;
+	}
 }

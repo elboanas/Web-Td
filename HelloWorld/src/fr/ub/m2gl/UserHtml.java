@@ -14,7 +14,7 @@ public class UserHtml {
 			
 			return "<html>"
 	        		+ "<body>"
-	        		+ "<form action=\"/HelloWorld/hello3\" target=\"_blank\" method=\"GET\">\n" + 
+	        		+ "<form action=\"/HelloWorld/hello3/add\" target=\"_blank\" method=\"GET\">\n" + 
 	        		"  First name:<br>\n" + 
 	        		"  <input type=\"text\" name=\"firstname\" value=\"\">\n" + 
 	        		"  <br>\n" + 
@@ -22,7 +22,6 @@ public class UserHtml {
 	        		"  <input type=\"text\" name=\"lastname\" value=\"\">\n" + 
 	        		"  <br><br>\n" + 
 	        		"  <input type=\"submit\" value=\"Submit\">\n" + 
-	        		"  <input type=\"submit\" value=\"update\">\n" + 
 	        		"</form>"
 	        		+ "</body>"
 	        		+ "</html>";

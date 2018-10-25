@@ -61,7 +61,7 @@ public class User {
 		return "failed";
 	}
 	
-	public static  String updateUserToMongo(User us) {
+	public static  String updateUserToMongo(User us, String newFirst) {
 		MongoClient mongoClient = null;
 		try {
 			mongoClient = new MongoClient();
@@ -71,7 +71,7 @@ public class User {
 		    ObjectMapper mapper = new ObjectMapper();
 		    String jsonString = mapper.writeValueAsString(us);
 		    Document doc2 = Document.parse(jsonString);
-		    Document doc1 = new Document("firstName","zak"); ///name to modifiy
+		    Document doc1 = new Document("firstName",newFirst); ///name to modifiy
 		    collection.updateOne(doc1, new Document("$set", doc2));
 		    return "Utilisateur " + us.getFirstName() + " " + us.getLastName() + " updated successfully.";
 		} catch (Exception e) {
@@ -82,8 +82,8 @@ public class User {
 		return "failed";
 	}
 	
-	public static  List<String> showUsers() {
-		List<String> userList = new ArrayList<String>();
+	public static  List<User> showUsers() {
+		List<User> userList = new ArrayList<User>();
 		MongoClient mongoClient = null;
 		try {
 			mongoClient = new MongoClient();
@@ -95,8 +95,9 @@ public class User {
 		    MongoCursor<Document> cursor = fi.iterator();
 		    while(cursor.hasNext()) {
 		    	Document o =  cursor.next();
-		    	userList.add( (String) o.get("firstName"));
-		    	userList.add( (String) o.get("lastName"));
+		    	
+		    	userList.add( new User( (String) o.get("firstName"), (String) o.get("lastName")));
+		    	//userList.add( (String) o.get("lastName"));
 		    	
 		    }
 		    cursor.close();
@@ -111,6 +112,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + "]";
+		return  firstName + " " + lastName;
 	}
 }
