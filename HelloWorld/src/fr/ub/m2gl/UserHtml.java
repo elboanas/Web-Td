@@ -12,7 +12,7 @@ public class UserHtml {
 
 	public String form() {
 
-		return "<html>" + "<body>" + "<form action=\"/HelloWorld/hello/add\" target=\"_blank\" method=\"GET\">\n"
+		return "<html>" + "<body>" + "<form action=\"/HelloWorld/User/add\" target=\"_blank\" method=\"POST\">\n"
 				+ "  First name:<br>\n" + "  <input type=\"text\" name=\"firstname\" value=\"\">\n" + "  <br>\n"
 				+ "  Last name:<br>\n" + "  <input type=\"text\" name=\"lastname\" value=\"\">\n" + "  <br><br>\n"
 				+ "  <input type=\"submit\" value=\"Add User\">\n" + "</form>" + "</body>" + "</html>";

@@ -38,9 +38,10 @@ public class UserRessource {
 		;
 		return myObj.defaultObjectMapper.writeValueAsString(userList);
 	}
-	
+
 	@Path("/read")
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	public String getUser() throws IOException {
 		FileInputStream in = new FileInputStream("/home/zakaria/Documents/Web-Td/HelloWorld/carnet.json");
 		User[] myUsers = myObj.defaultObjectMapper.readValue(in, User[].class);

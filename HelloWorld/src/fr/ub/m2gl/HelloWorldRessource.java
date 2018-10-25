@@ -15,10 +15,10 @@ import javax.ws.rs.core.MediaType;
 
 public class HelloWorldRessource {
 	@Path("/add")
-	@GET
+	@POST
 	@Produces("text/plain")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String getHelloWorld(@QueryParam("firstname") String f, @QueryParam("lastname") String l) {
+	public String getHelloWorld(@FormParam("firstname") String f, @FormParam("lastname") String l) {
 		String result = MongoUser.addUserToMongo(new User(f, l));
 
 		return "Hello World from " + f + " " + l + " " + result;
