@@ -12,10 +12,26 @@ public class UserHtml {
 
 	public String form() {
 
-		return "<html>" + "<body>" + "<form action=\"/HelloWorld/User/add\" target=\"_blank\" method=\"POST\">\n"
-				+ "  First name:<br>\n" + "  <input type=\"text\" name=\"firstname\" value=\"\">\n" + "  <br>\n"
-				+ "  Last name:<br>\n" + "  <input type=\"text\" name=\"lastname\" value=\"\">\n" + "  <br><br>\n"
-				+ "  <input type=\"submit\" value=\"Add User\">\n" + "</form>" + "</body>" + "</html>";
+		return "<html>"+"<head>"+"<script> "
+
+				
+				+ "function loadDoc() {\n"  
+                + "var fname = document.getElementById(\"firstname\").value;"
+                + "var lname = document.getElementById(\"lastname\").value;"
+				+ "alert(fname);"
+                +
+				"  var xhttp = new XMLHttpRequest();\n" + 
+				"  xhttp.onreadystatechange = function() {\n" + 
+				"  };\n" + 
+				"  xhttp.open(\"POST\", \"http://localhost:8080/HelloWorld/User/add\", true);\n" + 
+				"  xhttp.setRequestHeader(\"Content-type\", \"application/x-www-form-urlencoded\");\n" + 
+				"  xhttp.send(\"firstname=\"+fname+\"lastname=\"+lname);\n"  
+				+"}"
+				+ "</script>"+
+		"</head>" + "<body>"
+				+ "  First name:<br>\n" + "  <input type=\"text\" id=\"firstname\" value=\"\">\n" + "  <br>\n"
+				+ "  Last name:<br>\n" + "  <input type=\"text\" id=\"lastname\" value=\"\">\n" + "  <br><br>\n"
+				+ "  <input type=\"button\" onclick=\"loadDoc()\" value=\"Add User\">\n" + "</body>" + "</html>";
 
 	}
 
